@@ -13,6 +13,13 @@ angular.module('occ.artists')
             return response.data.artists.items;
           });
 
+      },
+
+      get: function(artistId) {
+        return $http.get('https://api.spotify.com/v1/artists/' + artistId)
+          .then(function(response) {
+            return response.data;
+          });
       }
     }
   });
