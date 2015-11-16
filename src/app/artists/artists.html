@@ -1,15 +1,29 @@
 <div class="container">
   <div class="jumbotron">
 
-    <form class="form-inline">
-      <div class="form-group">
-        <label for="search" class="control-label">Query</label>
-        <input id="search" type="text" class="form-control"
-          ng-model="artists.query">
-        <button class="btn btn-primary"
-                ng-click="artists.search()">
-          Search
-        </button>
+    <form class="form-inline" name="searchForm" novalidate>
+      <div class="row">
+        <div class="form-group">
+          <label for="search" class="control-label">Query</label>
+          <input id="search" type="text" class="form-control"
+                 required="" name="query"
+                 minlength="3"
+                 ng-model="artists.query">
+          <ng-messages for="searchForm.query.$error"
+                       ng-if="searchForm.query.$dirty || searchForm.query.$touched">
+            <ng-message when="required" class="text-danger">Pole wymagane</ng-message>
+            <ng-message when="minlength" class="text-danger">Wartość za krótka</ng-message>
+          </ng-messages>
+
+        </div>
+        <div class="row">
+          <button class="btn btn-primary"
+                  ng-click="artists.search()"
+                  ng-disabled="searchForm.$invalid">
+            Search
+          </button>
+
+        </div>
       </div>
     </form>
 
