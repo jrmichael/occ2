@@ -2,17 +2,21 @@ angular.module('occ.artists')
   .directive('artistImage', function () {
     return {
       restrict: 'E',
-      template: '<img ng-src="{{ artistImageSource() }}">',
-      scope: {
+      template: '<img ng-src="{{ image.source() }}">',
+      scope: {},
+      bindToController: {
         artist: '='
       },
-      link: function ($scope) {
-        $scope.artistImageSource = function () {
-          if ($scope.artist.images && $scope.artist.images.length > 0) {
-            return $scope.artist.images[0].url;
+      controllerAs: 'image',
+      controller: function () {
+        var vm = this;
+        vm.source = function () {
+          if (vm.artist.images && vm.artist.images.length > 0) {
+            return vm.artist.images[0].url;
           }
           return 'http://www.motothenw.com/wp-content/uploads/2015/05/placeholder-headshot.jpg';
         };
       }
+
     }
   });
