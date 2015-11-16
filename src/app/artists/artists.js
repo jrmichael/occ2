@@ -11,19 +11,14 @@ angular.module('occ.artists', [
       controllerAs: 'artists'
     })
   })
-  .controller('ArtistsController', function($http) {
+  .controller('ArtistsController', function(artistsService) {
 
     var vm  = this;
 
     vm.search = function() {
-      $http.get('https://api.spotify.com/v1/search', {
-        params: {
-          q: vm.query,
-          type: 'artist'
-        }
-      })
-        .then(function (response) {
-          vm.list = response.data.artists.items;
+      artistsService.search(vm.query)
+        .then(function (results) {
+          vm.list = results;
         });
     };
 
