@@ -1,1 +1,23 @@
-<h2>artists</h2>
+<div class="container">
+  <div class="jumbotron">
+
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="search" class="control-label">Query</label>
+        <input id="search" type="text" class="form-control"
+          ng-model="artists.query">
+        <button class="btn btn-primary"
+                ng-click="artists.search()">
+          Search
+        </button>
+      </div>
+    </form>
+
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="artist in artists.list">
+        <pre>{{ artist.name }}</pre>
+      </li>
+    </ul>
+
+  </div>
+</div>
