@@ -1,7 +1,14 @@
-(function() {
+(function () {
   'use strict';
 
   angular
-    .module('occ', ['ngSanitize', 'ngMessages', 'ui.router', 'mgcrea.ngStrap', 'toastr']);
+    .module('occ', [
+      'occ.artists',
+      'ngSanitize',
+      'ngMessages',
+      'ui.router',
+      'mgcrea.ngStrap',
+      'toastr'
+    ]);
 
 })();
