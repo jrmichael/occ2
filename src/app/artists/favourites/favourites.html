@@ -1,0 +1,29 @@
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="artist in favourites.list">
+    <div class="row">
+
+      <div class="col-md-10">
+
+        <a ui-sref="artist({artistId:artist.id})">
+          {{ artist.name }}
+        </a>
+
+      </div>
+
+      <div class="col-md-2">
+
+        <button class="btn btn-danger pull-right" ng-click="favourites.remove(artist)">
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </li>
+
+  <li class="list-group-item" ng-if="favourites.list.length === 0">
+    List is empty
+  </li>
+</ul>
+

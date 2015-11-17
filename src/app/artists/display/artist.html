@@ -1,6 +1,18 @@
 <div class="jumbotron">
 
-  <h1>{{ artist.details.name }}</h1>
+  <div class="row">
+    <div class="col-md-10">
+      <h1>{{ artist.details.name }}</h1>
+    </div>
+
+    <div class="col-md-2">
+      <button class="btn btn-default" ng-click="artist.saveAsFavourite()">
+        <i class="glyphicon glyphicon-star"></i>
+      </button>
+    </div>
+
+  </div>
+
 
   <artist-image artist="artist.details"></artist-image>
 
